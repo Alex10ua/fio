@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create person</title>
+    <link rel = "icon" href =
+            "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
+          type = "image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+<a class="btn btn-default" href="/main">Головна сторінка</a>
+<form action="#" th:action="@{/personUpdate}" th:object="${person}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br>
+    <label for="firstname">Ім'я</label>
+    <input type="text" th:field="*{firstname}" id="firstname" placeholder="Ім'я">
+    <br>
+    <label for="lastname">Прізвище</label>
+    <input type="text" th:field="*{lastname}" id="lastname" placeholder="Прізвище">
+    <br>
+    <label for="fathername">По-батькові</label>
+    <input type="text" th:field="*{fathername}" id="fathername" placeholder="По-батькові">
+    <br>
+    <label for="identificationcode">Індентифікаційник код</label>
+    <input type="number" th:field="*{identificationcode}" pattern="^(\d{10})$" id="identificationcode" placeholder="Індентифікаційник код">
+    <br>
+    <label for="gender">Стать</label>
+    <input type="text" th:field="*{gender}" id="gender" placeholder="Стать">
+    <br>
+    <label for="numberofpassport">Номер паспорту</label>
+    <input type="text" th:field="*{numberofpassport}" pattern="[A-Z]{2}\d{6}" id="numberofpassport" placeholder="Номер паспорту">
+    <br>
+    <label for="birthdate">Дата народження</label>
+    <input type="date" th:field="*{birthdate}" id="birthdate" placeholder="Дата народження">
+    <br>
+    <label for="address">Адреса</label>
+    <input type="text" th:field="*{address}" id="address" placeholder="Адреса">
+    <br>
+    <input type="submit" value="Оновити дані">
+</form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel = "icon" href =
+            "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
+          type = "image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+<a class="btn btn-default" href="/main">Головна сторінка</a>
+<div th:switch="${people}">
+    <h2 th:case="null">Список пустий</h2>
+    <div th:case="*">
+        <h2>Люди</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Індифікаиор</th>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+                <th>По-батькові</th>
+                <th>Індетифікаційний код</th>
+                <th>Стать</th>
+                <th>Номер паспорту</th>
+                <th>Дата народження</th>
+                <th>Адреса</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : ${people}">
+                <td th:text="${person.id}"></td>
+                <td th:text="${person.identificationcode}"></td>
+                <td th:text="${person.lastname}"></td>
+                <td th:text="${person.firstname}"></td>
+                <td th:text="${person.fathername}"></td>
+                <td th:text="${person.gender}"></td>
+                <td th:text="${person.numberofpassport}"></td>
+                <td th:text="${person.birthdate}"></td>
+                <td th:text="${person.address}"></td>
+                <td><a class="btn btn-default" th:href="@{personUpdate/{id}(id=${person.id})}">Редагувати</a></td>
+                <td><a class="btn btn-default" th:href="@{personDelete/{id}(id=${person.id})}">Видалити</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <p><a class="btn btn-default" href="/personCreate">Створити нового клієнта</a></p>
+        <button onclick="window.print()">Роздрукувати</button>
+</body>
+</html>
